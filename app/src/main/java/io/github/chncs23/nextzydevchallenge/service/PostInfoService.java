@@ -10,6 +10,9 @@ import retrofit2.http.Query;
  */
 
 public interface PostInfoService {
-    @GET("blogger/v3/blogs/blogId/posts") Call<PostDataSet> getPostInfo(@Query("key") String apiKey,
-            @Query("blogId") String blogId, @Query("fetchImages") boolean needFetchImages);
+    @GET("blogger/v3/blogs/blogId/posts")
+    Call<PostDataSet> getPostInfo(@Query("key") String apiKey,
+            @Query("blogId") String blogId,
+            @Query("fetchImages") boolean needFetchImages,
+            @Query("maxResults") int maxResults);
 }

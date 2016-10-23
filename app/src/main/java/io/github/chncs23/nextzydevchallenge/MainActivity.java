@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPostData() {
         Call<PostDataSet> postDataSetCall = HTTPManager.create(PostInfoService.class)
-                .getPostInfo("AIzaSyBzL7-wKQl-bOHg7EyFxYrSWDrqIqGbt4Y", "2112378201659339351", true);
+                .getPostInfo("AIzaSyBzL7-wKQl-bOHg7EyFxYrSWDrqIqGbt4Y", "2112378201659339351", true, 100);
         postDataSetCall.enqueue(new Callback<PostDataSet>() {
             @Override public void onResponse(Call<PostDataSet> call, Response<PostDataSet> response) {
                 if (!response.isSuccessful()) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override public void onFailure(Call<PostDataSet> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Error 2", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

@@ -3,14 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dip"
-    android:layout_marginTop="2dip"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="4dp"
     >
   <ImageView
       android:id="@+id/postImg"
       android:layout_width="match_parent"
       android:layout_height="300dp"
       android:contentDescription="post image"
+      android:scaleType="centerCrop"
       />
   <TextView
       android:id="@+id/postTitle"
