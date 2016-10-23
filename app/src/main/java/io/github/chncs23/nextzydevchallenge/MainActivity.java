@@ -1,5 +1,7 @@
 package io.github.chncs23.nextzydevchallenge;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +14,7 @@ import io.github.chncs23.nextzydevchallenge.service.PostInfoService;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,10 +29,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getPostData() {
+        final ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("รอแป๊บนึง");
+        progressDialog.show();
+
         Call<PostDataSet> postDataSetCall = HTTPManager.create(PostInfoService.class)
                 .getPostInfo("AIzaSyBzL7-wKQl-bOHg7EyFxYrSWDrqIqGbt4Y", "2112378201659339351", true, 100);
         postDataSetCall.enqueue(new Callback<PostDataSet>() {
             @Override public void onResponse(Call<PostDataSet> call, Response<PostDataSet> response) {
+                progressDialog.dismiss();
                 if (!response.isSuccessful()) {
                     Toast.makeText(MainActivity.this, "Error 1", Toast.LENGTH_SHORT).show();
                 }
@@ -41,9 +50,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override public void onFailure(Call<PostDataSet> call, Throwable t) {
+                progressDialog.dismiss();
                 Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
 
