@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class PostItem {
     private String title;
-    private ArrayList<String> imageUrl;
+    private ArrayList<Image> images;
     private String url;
 
     public String getTitle() {
@@ -19,12 +19,12 @@ public class PostItem {
         this.title = title;
     }
 
-    public ArrayList<String> getImageUrl() {
-        return imageUrl;
+    public ArrayList<Image> getImages() {
+        return images;
     }
 
-    public void setImageUrl(ArrayList<String> imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImages(ArrayList<Image> images) {
+        this.images = images;
     }
 
     public String getUrl() {
@@ -33,5 +33,17 @@ public class PostItem {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public class Image {
+        private String url;
+
+        public String getUrl() {
+            return url;
+        }
+
+        public void setUrl(String url) {
+            this.url = url;
+        }
     }
 }

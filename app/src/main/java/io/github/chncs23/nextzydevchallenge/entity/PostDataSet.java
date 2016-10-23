@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class PostDataSet {
     private ArrayList<PostItem> items;
 
-    public ArrayList<PostItem> getPostItems() {
+    public ArrayList<PostItem> getItems() {
         return items;
     }
 
-    public void setPostItems(ArrayList<PostItem> postItems) {
-        this.items = postItems;
+    public void setItems(ArrayList<PostItem> items) {
+        this.items = items;
     }
 }

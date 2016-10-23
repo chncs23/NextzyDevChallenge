@@ -1,8 +1,8 @@
 package io.github.chncs23.nextzydevchallenge.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import io.github.chncs23.nextzydevchallenge.R;
 import io.github.chncs23.nextzydevchallenge.entity.PostDataSet;
@@ -43,7 +43,7 @@ public class PostFeedAdapter extends RecyclerView.Adapter {
     }
 
     private ArrayList<PostItem> getPostItems() {
-        return postDataSet.getPostItems();
+        return postDataSet.getItems();
     }
 
     @Override public int getItemCount() {
@@ -52,6 +52,6 @@ public class PostFeedAdapter extends RecyclerView.Adapter {
     }
 
     @Override public int getItemViewType(int position) {
-        return getPostItems().get(position).getImageUrl() == null ? NO_IMG_POST : IMG_POST;
+        return getPostItems().get(position).getImages() == null ? NO_IMG_POST : IMG_POST;
     }
 }

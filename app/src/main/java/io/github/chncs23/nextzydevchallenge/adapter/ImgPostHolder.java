@@ -6,7 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import io.github.chncs23.nextzydevchallenge.R;
-import io.github.chncs23.nextzydevchallenge.entity.PostDataSet;
 import io.github.chncs23.nextzydevchallenge.entity.PostItem;
 
 /**
@@ -24,7 +23,7 @@ public class ImgPostHolder extends RecyclerView.ViewHolder {
     }
 
     public void setPostData(PostItem postItem) {
-        Glide.with(postImg.getContext()).load(postItem.getImageUrl().get(0));
+        Glide.with(postImg.getContext()).load(postItem.getImages().get(0).getUrl()).into(postImg);
         postTitle.setText(postItem.getTitle());
     }
 }
